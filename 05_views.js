@@ -37,7 +37,7 @@ const intro = babeViews.view_generator('intro', {
 });
 
 // For most tasks, you need instructions views
-/**const instructions = babeViews.view_generator("instructions", {
+const instructions = babeViews.view_generator("instructions", {
     trials: 1,
     name: 'instrucions',
     title: 'Generall Instructions',
@@ -71,7 +71,7 @@ const beginT = babeViews.view_generator("begin",{
 
 
 // In the post test questionnaire you can ask your participants addtional questions
-const post_test = babeViews.view_generator("postTest",{
+const post_test = babeViews.view_generator("post_test",{
     trials: 1,
     name: 'post_test',
     title: 'Additional information',
@@ -125,41 +125,43 @@ const thanks = babeViews.view_generator("thanks",{
 
 
 // Here, we initialize a forcedChoice view
-/**
 
-const forced_choice_2A = babeViews.view_generator("keyPress",{
+
+const forced_choice_2A = babeViews.view_generator('key_press',{
     // This will use all trials specified in `data`, you can user a smaller value (for testing), but not a larger value
     trials: trial_info.key_press_trials.length,
     // name and trial_type should be identical to the variable name
-    name: 'key_press_trials',
-    trial_type: 'key_press_trials',
+    name: 'key_press_test',
     data: trial_info.key_press_trials,
     stim_duration: 7500,
     stim_duration: 'f',
     stim_duration: 'j',
-    pause: 250,
+    fix_duration: 500,
+    pause: 1000,
     hook: {
         after_response_enabled: checkResponse,
     },
 });
 
-const forced_choice_2B = babeViews.view_generator("key_press",{
+const forced_choice_2B = babeViews.view_generator('key_press',{
     // This will use all trials specified in `data`, you can user a smaller value (for testing), but not a larger value
     trials: trial_info.key_press_trials_main.length,
     // name and trial_type should be identical to the variable name
-    name: 'key_press_trials_main',
-    trial_type: 'key_press_trials_main',
+    name: 'key_press_main',
     data: trial_info.key_press_trials_main,
     stim_duration: 7500,
     stim_duration: 'f',
     stim_duration: 'j',
-    pause: 250,
+    fix_duration: 500,
+    pause: 1000,
 });
 
 
 // compares the chosen answer to the value of `option1`
 function checkResponse(data, next) {
+  data.response_checked = false;
   $("body").on("keydown", function(e) {
+    if(data.response_checked == false) {
       const keyPressed = String.fromCharCode(
           e.which
       ).toLowerCase();
@@ -167,15 +169,16 @@ function checkResponse(data, next) {
           if(data[keyPressed] === data.expected) {
             alert('Your answer is correct! Yey!');
           } else {
-            alert('Sorry, this answer is incorrect :(');
+            alert('Sorry, this answer is incorrect. The correct answer is:  ' + data.expected);
           }
+          $("body").off("keydown");
+          next();
       }
-      $("body").off("keydown");
-      next();
+    }
   }) ;
 
 
-}*/
+}
 
 // There are many more templates available:
 // forcedChoice, sliderRating, dropdownChoice, testboxInput, ratingScale, imageSelection, sentenceChoice, keyPress, selfPacedReading and selfPacedReading_ratingScale

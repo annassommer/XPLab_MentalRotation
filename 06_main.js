@@ -16,18 +16,18 @@ $("document").ready(function() {
         // You have to specify all views you want to use in this experiment and the order of them
         views_seq: [
             intro,
-            //instructions,
-            // You can also randomize the order of some views
-            //beginP,
-            //forced_choice_2A,
-            //beginT,
-            //forced_choice_2B,
-            //post_test,
-            //thanks,
+            instructions,
+             //You can also randomize the order of some views
+            beginP,
+            forced_choice_2A,
+            beginT,
+            forced_choice_2B,
+            post_test,
+            thanks,
         ],
         // Here, you can specify all information for the deployment
         deploy: {
-            experimentID: "INSERT_A_NUMBER",
+            experimentID: "2",
             serverAppURL: "https://babe-demo.herokuapp.com/api/submit_experiment/",
             // Possible deployment methods are:
             // "debug" and "directLink"
@@ -41,6 +41,7 @@ $("document").ready(function() {
             in: [
                 // list the view-names of the views for which you want a progress bar
                 forced_choice_2A.name,
+                forced_choice_2B.name,
             ],
              // Possible styles are "default", "separate" and "chunks"
             style: "separate",
