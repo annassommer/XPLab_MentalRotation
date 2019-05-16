@@ -19,7 +19,7 @@
 */
 
 // Every experiment should start with an intro view. Here you can welcome your participants and tell them what the experiment is about
-const intro = babeViews.intro({
+const intro = babeViews.view_generator("intro", {
     trials: 1,
     name: 'intro',
     // If you use JavaScripts Template String `I am a Template String`, you can use HTML <></> and javascript ${} inside
@@ -37,7 +37,7 @@ const intro = babeViews.intro({
 });
 
 // For most tasks, you need instructions views
-const instructions = babeViews.instructions({
+const instructions = babeViews.view_generator("instructions", {
     trials: 1,
     name: 'instrucions',
     title: 'Generall Instructions',
@@ -51,7 +51,7 @@ const instructions = babeViews.instructions({
     buttonText: 'go to trials'
 });
 
-const beginP = babeViews.begin({
+const beginP = babeViews.view_generator("begin",{
     trials: 1,
     name: 'begin',
     title: 'Practice Phase',
@@ -60,7 +60,7 @@ const beginP = babeViews.begin({
 
 });
 
-const beginT = babeViews.begin({
+const beginT = babeViews.view_generator("begin",{
     trials: 1,
     name: 'begin',
     title: 'Main Test',
@@ -71,7 +71,7 @@ const beginT = babeViews.begin({
 
 
 // In the post test questionnaire you can ask your participants addtional questions
-const post_test = babeViews.postTest({
+const post_test = babeViews.view_generator("postTest",{
     trials: 1,
     name: 'post_test',
     title: 'Additional information',
@@ -94,7 +94,7 @@ const post_test = babeViews.postTest({
 });
 
 // The 'thanks' view is crucial; never delete it; it submits the results!
-const thanks = babeViews.thanks({
+const thanks = babeViews.view_generator("thanks",{
     trials: 1,
     name: 'thanks',
     title: 'Thank you for taking part in this experiment!',
@@ -125,7 +125,7 @@ const thanks = babeViews.thanks({
 
 
 // Here, we initialize a forcedChoice view
-const forced_choice_2A = babeViews.keyPress({
+const forced_choice_2A = babeViews.view_generator("keyPress",{
     // This will use all trials specified in `data`, you can user a smaller value (for testing), but not a larger value
     trials: trial_info.key_press_trials.length,
     // name and trial_type should be identical to the variable name
@@ -141,7 +141,7 @@ const forced_choice_2A = babeViews.keyPress({
     },
 });
 
-const forced_choice_2B = babeViews.keyPress({
+const forced_choice_2B = babeViews.view_generator("key_press",{
     // This will use all trials specified in `data`, you can user a smaller value (for testing), but not a larger value
     trials: trial_info.key_press_trials_main.length,
     // name and trial_type should be identical to the variable name
