@@ -19,7 +19,7 @@
 */
 
 // Every experiment should start with an intro view. Here you can welcome your participants and tell them what the experiment is about
-const intro = babeViews.view_generator("intro", {
+const intro = babeViews.view_generator('intro', {
     trials: 1,
     name: 'intro',
     // If you use JavaScripts Template String `I am a Template String`, you can use HTML <></> and javascript ${} inside
@@ -37,7 +37,7 @@ const intro = babeViews.view_generator("intro", {
 });
 
 // For most tasks, you need instructions views
-const instructions = babeViews.view_generator("instructions", {
+/**const instructions = babeViews.view_generator("instructions", {
     trials: 1,
     name: 'instrucions',
     title: 'Generall Instructions',
@@ -125,6 +125,8 @@ const thanks = babeViews.view_generator("thanks",{
 
 
 // Here, we initialize a forcedChoice view
+/**
+
 const forced_choice_2A = babeViews.view_generator("keyPress",{
     // This will use all trials specified in `data`, you can user a smaller value (for testing), but not a larger value
     trials: trial_info.key_press_trials.length,
@@ -173,7 +175,7 @@ function checkResponse(data, next) {
   }) ;
 
 
-}
+}*/
 
 // There are many more templates available:
 // forcedChoice, sliderRating, dropdownChoice, testboxInput, ratingScale, imageSelection, sentenceChoice, keyPress, selfPacedReading and selfPacedReading_ratingScale
